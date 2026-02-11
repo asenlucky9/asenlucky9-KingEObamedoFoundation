@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- React / Vite Dev Tools -->
+  <script type="module">
+    import { injectIntoGlobalHook } from "/@react-refresh";
+    injectIntoGlobalHook(window);
+    window.$RefreshReg$ = () => {};
+    window.$RefreshSig$ = () => (type) => type;
+  </script>
+
+  <script type="module" src="/@vite/client"></script>
+
+  <!-- Basic Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Website Title -->
+  <title>King E Obamedo Foundation - Empowering Communities</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="King E Obamedo Foundation is a nonprofit organization empowering women, youths, and communities in Benin City, Nigeria." />
+  <meta name="keywords" content="NGO Nigeria, Women Empowerment, Youth Employment, Charity Benin City, Community Development Nigeria" />
+  <meta name="author" content="King E Obamedo Foundation" />
+
+  <!-- Social Media Preview (Open Graph) -->
+  <meta property="og:title" content="King E Obamedo Foundation" />
+  <meta property="og:description" content="Empowering communities and transforming lives in Nigeria." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/preview-image.png" />
+  <meta property="og:url" content="https://kingeobamedofoundation.org" />
+
+  <!-- Twitter Preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="King E Obamedo Foundation" />
+  <meta name="twitter:description" content="Empowering communities and transforming lives in Nigeria." />
+  <meta name="twitter:image" content="/preview-image.png" />
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#1e3a8a" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Vite 7 production globals - MUST run before the app bundle -->
+  <script>
+    (function(){var g=typeof globalThis!=="undefined"?globalThis:typeof window!=="undefined"?window:typeof self!=="undefined"?self:Function("return this")();if(!g.__DEFINES__)g.__DEFINES__={};if(g.__HMR_CONFIG_NAME__===undefined)g.__HMR_CONFIG_NAME__="";if(g.__BASE__===undefined)g.__BASE__="/";if(g.__HMR_ENABLE_OVERLAY__===undefined)g.__HMR_ENABLE_OVERLAY__=false;})();
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
