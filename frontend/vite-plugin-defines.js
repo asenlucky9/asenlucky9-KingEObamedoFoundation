@@ -6,6 +6,7 @@ const VITE_GLOBALS = [
   ['__HMR_CONFIG_NAME__', '""'],
   ['__HMR_PROTOCOL__', '""'],
   ['__HMR_HOST__', '""'],
+  ['__HMR_PORT__', '""'],
   ['__BASE__', '"/"'],
   ['__HMR_ENABLE_OVERLAY__', 'false'],
   ['__SERVER_HOST__', '""'],
@@ -37,7 +38,7 @@ export default function definesPlugin() {
       let out = code
 
       // Fix Vite runtime globals const/let (TDZ) - production doesn't use HMR
-      for (const name of ['__SERVER_HOST__', '__HMR_PROTOCOL__', '__HMR_HOST__', '__DEFINES__']) {
+      for (const name of ['__SERVER_HOST__', '__HMR_PROTOCOL__', '__HMR_HOST__', '__HMR_PORT__', '__DEFINES__']) {
         if (out.includes(name)) {
           out = fixConstLet(out, name)
           if (!new RegExp(`(const|let|var)\\s+${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(out)) {
