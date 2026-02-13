@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- React / Vite Dev Tools -->
-  <script type="module">
-    import { injectIntoGlobalHook } from "/@react-refresh";
-    injectIntoGlobalHook(window);
-    window.$RefreshReg$ = () => {};
-    window.$RefreshSig$ = () => (type) => type;
-  </script>
-
-  <script type="module" src="/@vite/client"></script>
-
   <!-- Basic Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,11 +36,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Vite 7 production globals - MUST run before the app bundle -->
-  <script>
-    (function(){var g=typeof globalThis!=="undefined"?globalThis:typeof window!=="undefined"?window:typeof self!=="undefined"?self:Function("return this")();if(!g.__DEFINES__)g.__DEFINES__={};if(g.__HMR_CONFIG_NAME__===undefined)g.__HMR_CONFIG_NAME__="";if(g.__HMR_PROTOCOL__===undefined)g.__HMR_PROTOCOL__="";if(g.__HMR_HOST__===undefined)g.__HMR_HOST__="";if(g.__HMR_PORT__===undefined)g.__HMR_PORT__="";if(g.__BASE__===undefined)g.__BASE__="/";if(g.__HMR_ENABLE_OVERLAY__===undefined)g.__HMR_ENABLE_OVERLAY__=false;if(g.__SERVER_HOST__===undefined)g.__SERVER_HOST__="";})();
-  </script>
 </head>
 <body>
   <div id="root"></div>
