@@ -6,6 +6,7 @@ const VITE_GLOBALS = [
   ['__HMR_CONFIG_NAME__', '""'],
   ['__BASE__', '"/"'],
   ['__HMR_ENABLE_OVERLAY__', 'false'],
+  ['__SERVER_HOST__', '""'],
 ]
 
 function getInjections(code) {
@@ -33,14 +34,19 @@ export default function definesPlugin() {
     renderChunk(code, chunk, options) {
       let out = code
 
-      // Fix __DEFINES__ const/let (TDZ)
-      if (out.includes('__DEFINES__')) {
-        out = fixConstLet(out, '__DEFINES__')
-        if (!/(const|let|var)\s+__DEFINES__/.test(out)) {
-          const globalRef = '((typeof globalThis !== "undefined" && globalThis.__DEFINES__) || (typeof window !== "undefined" && window.__DEFINES__) || {})'
-          out = `var __DEFINES__ = ${globalRef};\n${out}`
+      // Fix __SERVER_HOST__ and __DEFINES__ const/let (TDZ)
+      for (const name of ['__SERVER_HOST__', '__DEFINES__']) {
+        if (out.includes(name)) {
+          out = fixConstLet(out, name)
+          if (!new RegExp(`(const|let|var)\\s+${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(out)) {
+            const value = name === '__DEFINES__'
+              ? '((typeof globalThis !== "undefined" && globalThis.__DEFINES__) || (typeof window !== "undefined" && window.__DEFINES__) || {})'
+              : '""'
+            out = `var ${name} = ${value};\n${out}`
+          }
         }
       }
+
 
       // Inject any missing Vite globals at the start of the chunk
       const injections = getInjections(out)
