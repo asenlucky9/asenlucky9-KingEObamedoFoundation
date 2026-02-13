@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, CreditCard, Smartphone, Building2, Gift, CheckCircle2, Lock, Shield } from 'lucide-react'
 import Button from '../components/ui/Button'
 
 const Donate = () => {
+  const [successMessage, setSuccessMessage] = useState(null)
+
   const [formData, setFormData] = useState({
     amount: '',
     customAmount: '',
@@ -82,16 +84,9 @@ const Donate = () => {
 
     const donationAmount = formData.customAmount || formData.amount
 
-    // Here you would integrate with Paystack or Flutterwave
-    // For now, we'll show a success message
-    console.log('Donation data:', {
-      ...formData,
-      amount: donationAmount,
-    })
+    setSuccessMessage(`Thank you for your donation of ₦${parseInt(donationAmount).toLocaleString()}! We will contact you for payment completion.`)
+    setTimeout(() => setSuccessMessage(null), 5000)
 
-    // Simulate payment processing
-    alert(`Thank you for your donation of ₦${parseInt(donationAmount).toLocaleString()}! Payment processing will be handled by Paystack/Flutterwave.`)
-    
     // Reset form after submission
     setFormData({
       amount: '',
@@ -142,8 +137,21 @@ const Donate = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white p-6 md:p-8 rounded-2xl border border-neutral-200 shadow-sm"
+                className="bg-white p-6 md:p-8 rounded-2xl border border-neutral-200 shadow-sm relative"
               >
+                <AnimatePresence>
+                  {successMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-800"
+                    >
+                      <CheckCircle2 className="flex-shrink-0 text-green-600" size={24} />
+                      <p className="text-sm font-medium">{successMessage}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <div className="flex items-center space-x-2 mb-6">
                   <Lock className="text-accent-orange" size={20} />
                   <span className="text-sm font-semibold text-neutral-700">Secure Payment</span>
@@ -197,7 +205,7 @@ const Donate = () => {
                             errors.amount ? 'border-red-300' : 'border-neutral-200'
                           }`}
                           onFocus={() => {
-                            setFormData({ ...formData, amount: '', customAmount: '' })
+                            setFormData((prev) => ({ ...prev, amount: '' }))
                           }}
                         />
                       </div>
@@ -294,7 +302,7 @@ const Donate = () => {
                           className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:border-accent-orange transition-colors ${
                             errors.email ? 'border-red-300' : 'border-neutral-200'
                           }`}
-                          placeholder="john@example.com"
+                          placeholder="your@email.com"
                         />
                         {errors.email && (
                           <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -332,7 +340,7 @@ const Donate = () => {
                       value={formData.designation}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl focus:outline-none focus:border-accent-orange transition-colors"
-                      placeholder="e.g., In memory of..."
+                      placeholder="In memory of..."
                     />
                   </div>
 

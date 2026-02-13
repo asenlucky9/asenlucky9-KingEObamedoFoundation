@@ -16,12 +16,17 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      // Ensure proper minification and chunking
       minify: 'esbuild',
       target: 'esnext',
+      chunkSizeWarningLimit: 600,
       rollupOptions: {
         output: {
           format: 'es',
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            'animation': ['framer-motion'],
+            'ui': ['lucide-react'],
+          },
         },
       },
       // Ensure proper sourcemap handling

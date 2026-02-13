@@ -2,14 +2,7 @@ import { motion } from 'framer-motion'
 import { Handshake } from 'lucide-react'
 
 const Partners = () => {
-  const partners = [
-    { name: 'Partner 1', logo: 'https://via.placeholder.com/150' },
-    { name: 'Partner 2', logo: 'https://via.placeholder.com/150' },
-    { name: 'Partner 3', logo: 'https://via.placeholder.com/150' },
-    { name: 'Partner 4', logo: 'https://via.placeholder.com/150' },
-    { name: 'Partner 5', logo: 'https://via.placeholder.com/150' },
-    { name: 'Partner 6', logo: 'https://via.placeholder.com/150' },
-  ]
+  const partners = []
 
   return (
     <section className="section-padding bg-neutral-50 relative overflow-hidden">
@@ -38,22 +31,35 @@ const Partners = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
-              className="group"
-            >
-              <div className="flex items-center justify-center p-6 bg-white rounded-2xl border border-neutral-200 hover:border-accent-orange/30 hover:shadow-md transition-all duration-300 h-32">
-                <div className="w-full h-full flex items-center justify-center bg-neutral-50 rounded-xl">
-                  <span className="text-neutral-400 text-xs font-medium">{partner.name}</span>
+          {partners.length > 0 ? (
+            partners.map((partner, index) => (
+              <motion.div
+                key={partner.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                className="group"
+              >
+                <div className="flex items-center justify-center p-6 bg-white rounded-2xl border border-neutral-200 hover:border-accent-orange/30 hover:shadow-md transition-all duration-300 h-32">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-16 w-auto object-contain"
+                  />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          ) : (
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="col-span-full text-center text-neutral-500 py-8"
+            >
+              Partners will be listed here as they join our mission.
+            </motion.p>
+          )}
         </div>
       </div>
     </section>

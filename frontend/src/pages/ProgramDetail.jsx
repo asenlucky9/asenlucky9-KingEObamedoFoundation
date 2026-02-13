@@ -106,41 +106,19 @@ const ProgramDetail = () => {
                         className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer bg-neutral-100"
                       >
                         <div className="aspect-[4/3] relative overflow-hidden">
+                          <div className="img-fallback hidden absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+                            <p className="text-neutral-400 text-sm">Image unavailable</p>
+                          </div>
                           <img
                             src={image}
                             alt={`${program.title} - Image ${index + 1}`}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             loading="lazy"
                             onError={(e) => {
-                              // Try alternative paths
-                              const altPaths = [
-                                image.replace('.jpg', '.jpeg'),
-                                image.replace('.jpeg', '.jpg'),
-                                image.replace('.jpg', '.png'),
-                                image.replace('.png', '.jpg'),
-                                `/founder/kingeobamedo.jpeg`
-                              ]
-                              
-                              let currentIndex = 0
-                              const tryNext = () => {
-                                if (currentIndex < altPaths.length) {
-                                  e.target.src = altPaths[currentIndex]
-                                  currentIndex++
-                                } else {
-                                  e.target.style.display = 'none'
-                                  e.target.parentElement.innerHTML = `
-                                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
-                                      <div class="text-center p-6">
-                                        <p class="text-neutral-400 text-sm mb-2">Image loading...</p>
-                                        <p class="text-neutral-300 text-xs">${image}</p>
-                                      </div>
-                                    </div>
-                                  `
-                                }
-                              }
-                              
-                              e.target.onerror = tryNext
-                              tryNext()
+                              e.target.onerror = null
+                              e.target.style.display = 'none'
+                              const fallback = e.target.parentElement.querySelector('.img-fallback')
+                              if (fallback) fallback.classList.remove('hidden')
                             }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

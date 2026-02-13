@@ -44,7 +44,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
             >
               <img 
-                src="/foundetion logo/foundationlogo.png" 
+                src="/foundation logo/foundationlogo.png" 
                 alt="King E Obamedo Foundation Logo"
                 className="h-14 md:h-16 lg:h-18 w-auto"
               />

@@ -1,22 +1,26 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/common/Layout'
-import Home from './pages/Home'
-import About from './pages/About'
-import Programs from './pages/Programs'
-import ProgramDetail from './pages/ProgramDetail'
-import Donate from './pages/Donate'
-import Volunteer from './pages/Volunteer'
-import GetInvolved from './pages/GetInvolved'
-import Gallery from './pages/Gallery'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import Contact from './pages/Contact'
-import NotFound from './pages/NotFound'
+import PageLoader from './components/common/PageLoader'
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Programs = lazy(() => import('./pages/Programs'))
+const ProgramDetail = lazy(() => import('./pages/ProgramDetail'))
+const Donate = lazy(() => import('./pages/Donate'))
+const Volunteer = lazy(() => import('./pages/Volunteer'))
+const GetInvolved = lazy(() => import('./pages/GetInvolved'))
+const Gallery = lazy(() => import('./pages/Gallery'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogPost = lazy(() => import('./pages/BlogPost'))
+const Contact = lazy(() => import('./pages/Contact'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
     <Layout>
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/programs" element={<Programs />} />
@@ -30,6 +34,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </Suspense>
     </Layout>
   )
 }

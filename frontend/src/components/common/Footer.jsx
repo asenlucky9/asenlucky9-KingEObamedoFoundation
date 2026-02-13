@@ -43,7 +43,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-3 mb-4 group">
               <div className="relative">
                 <img 
-                  src="/foundetion logo/foundationlogo.png" 
+                  src="/foundation logo/foundationlogo.png" 
                   alt="King E Obamedo Foundation Logo"
                   className="h-14 md:h-16 w-auto group-hover:scale-105 transition-transform drop-shadow-lg"
                   style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))' }}

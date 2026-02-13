@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Clock, MessageSquare } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Mail, Phone, MapPin, Send, Clock, MessageSquare, CheckCircle2 } from 'lucide-react'
 import Button from '../components/ui/Button'
 
 const Contact = () => {
@@ -11,12 +11,12 @@ const Contact = () => {
     subject: '',
     message: '',
   })
+  const [successMessage, setSuccessMessage] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
+    setSuccessMessage('Thank you for your message! We will get back to you soon.')
+    setTimeout(() => setSuccessMessage(null), 5000)
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
   }
 
@@ -139,7 +139,7 @@ const Contact = () => {
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full"
@@ -167,6 +167,19 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="bg-gradient-to-br from-white to-neutral-50 p-8 rounded-2xl border-2 border-neutral-200">
+                <AnimatePresence>
+                  {successMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-800"
+                    >
+                      <CheckCircle2 className="flex-shrink-0 text-green-600" size={24} />
+                      <p className="text-sm font-medium">{successMessage}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 bg-accent-orange/10 rounded-lg flex items-center justify-center">
                     <MessageSquare className="text-accent-orange" size={24} />

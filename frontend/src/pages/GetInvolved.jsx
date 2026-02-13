@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Gift, HandHeart, Users, Mail, ArrowRight, Send, CheckCircle2 } from 'lucide-react'
 import Button from '../components/ui/Button'
@@ -24,26 +24,29 @@ const GetInvolved = () => {
     partnershipType: '',
     message: '',
   })
+  const [successMessage, setSuccessMessage] = useState(null)
+
+  const showSuccess = (message) => {
+    setSuccessMessage(message)
+    setTimeout(() => setSuccessMessage(null), 5000)
+  }
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault()
-    console.log('Newsletter subscription:', newsletterEmail)
-    alert('Thank you for subscribing to our newsletter!')
+    showSuccess('Thank you for subscribing to our newsletter!')
     setNewsletterEmail('')
   }
 
   const handleVolunteerSubmit = (e) => {
     e.preventDefault()
-    console.log('Volunteer form submitted:', volunteerForm)
-    alert('Thank you for your interest in volunteering! We will contact you soon.')
+    showSuccess('Thank you for your interest in volunteering! We will contact you soon.')
     setVolunteerForm({ name: '', email: '', phone: '', skills: '', availability: '', message: '' })
     setActiveSection(null)
   }
 
   const handlePartnershipSubmit = (e) => {
     e.preventDefault()
-    console.log('Partnership form submitted:', partnershipForm)
-    alert('Thank you for your partnership interest! We will contact you soon.')
+    showSuccess('Thank you for your partnership interest! We will contact you soon.')
     setPartnershipForm({ organization: '', contactPerson: '', email: '', phone: '', partnershipType: '', message: '' })
     setActiveSection(null)
   }
@@ -103,6 +106,19 @@ const GetInvolved = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <AnimatePresence>
+        {successMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-[10000] px-6 py-4 bg-green-600 text-white rounded-xl shadow-lg flex items-center gap-3 min-w-[280px] max-w-md"
+          >
+            <CheckCircle2 className="flex-shrink-0" size={24} />
+            <p className="text-sm font-medium">{successMessage}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -309,7 +325,7 @@ const GetInvolved = () => {
                       value={volunteerForm.skills}
                       onChange={(e) => setVolunteerForm({ ...volunteerForm, skills: e.target.value })}
                       className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl focus:border-accent-orange focus:outline-none"
-                      placeholder="e.g., Teaching, IT, Marketing"
+                      placeholder="Teaching, IT, Marketing"
                     />
                   </div>
                   <div>
@@ -319,7 +335,7 @@ const GetInvolved = () => {
                       value={volunteerForm.availability}
                       onChange={(e) => setVolunteerForm({ ...volunteerForm, availability: e.target.value })}
                       className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl focus:border-accent-orange focus:outline-none"
-                      placeholder="e.g., Weekends, Evenings"
+                      placeholder="Weekends, Evenings"
                     />
                   </div>
                   <div>
@@ -414,7 +430,7 @@ const GetInvolved = () => {
                         value={partnershipForm.email}
                         onChange={(e) => setPartnershipForm({ ...partnershipForm, email: e.target.value })}
                         className="w-full px-4 py-3 border-2 border-neutral-200 rounded-xl focus:border-accent-orange focus:outline-none"
-                        placeholder="contact@organization.com"
+                        placeholder="your@email.com"
                       />
                     </div>
                     <div>
