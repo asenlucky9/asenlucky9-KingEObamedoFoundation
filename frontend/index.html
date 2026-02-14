@@ -26,8 +26,16 @@
   <meta name="twitter:description" content="Empowering communities and transforming lives in Nigeria." />
   <meta name="twitter:image" content="/preview-image.png" />
 
-  <!-- Mobile Theme Color -->
+  <!-- Mobile Theme Color (light mode; dark mode set via JS) -->
   <meta name="theme-color" content="#1e3a8a" />
+  <script>
+    (function() {
+      const stored = localStorage.getItem('king-obamedo-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored === 'dark' || (!stored && prefersDark);
+      if (isDark) document.documentElement.classList.add('dark');
+    })();
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />

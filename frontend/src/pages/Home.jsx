@@ -1,3 +1,4 @@
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import Hero from '../components/sections/Hero'
 import Impact from '../components/sections/Impact'
 import AboutSection from '../components/sections/AboutSection'
@@ -8,6 +9,7 @@ import Partners from '../components/sections/Partners'
 import CallToAction from '../components/sections/CallToAction'
 
 const Home = () => {
+  useDocumentTitle('Home')
   return (
     <>
       <Hero />

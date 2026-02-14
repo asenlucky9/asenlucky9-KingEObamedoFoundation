@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Image as ImageIcon } from 'lucide-react'
 import Button from '../ui/Button'
 import { galleryItems } from '../../data/galleryData'
+import { useHomeContent } from '../../context/HomeContentContext'
 
 const GalleryPreview = () => {
+  const { content } = useHomeContent()
+  const section = content.galleryPreview
   // Show first 4 items on home page
   const previewItems = galleryItems.slice(0, 4)
 
   return (
-    <section className="section-padding bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-800 dark:to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-navy/5 rounded-full blur-3xl"></div>
@@ -24,13 +27,13 @@ const GalleryPreview = () => {
         >
           <span className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary-navy/10 text-primary-navy rounded-full text-sm font-semibold mb-6">
             <ImageIcon size={16} />
-            <span>Gallery</span>
+            <span>{section.badge}</span>
           </span>
           <h2 className="section-title text-center mb-6">
-            See Our Impact in Action
+            {section.title}
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            A visual journey through our programs, events, and community impact.
+            {section.subtitle}
           </p>
         </motion.div>
 
@@ -72,7 +75,7 @@ const GalleryPreview = () => {
           className="text-center"
         >
           <Button as={Link} to="/gallery" variant="outline" size="lg">
-            View Full Gallery
+            {section.buttonText}
             <ArrowRight className="ml-2" size={18} />
           </Button>
         </motion.div>

@@ -2,34 +2,14 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Gift, HandHeart, ArrowRight, Users, Heart, Sparkles } from 'lucide-react'
 import Button from '../ui/Button'
+import { useHomeContent } from '../../context/HomeContentContext'
+
+const actionIcons = [Gift, HandHeart, Users]
 
 const CallToAction = () => {
-  const actions = [
-    {
-      icon: Gift,
-      title: 'Make a Donation',
-      description: 'Support our programs and make a lasting impact in communities across Nigeria.',
-      link: '/donate',
-      variant: 'primary',
-      color: 'from-accent-orange to-orange-600',
-    },
-    {
-      icon: HandHeart,
-      title: 'Volunteer With Us',
-      description: 'Join our team of dedicated volunteers and help us create positive change.',
-      link: '/get-involved',
-      variant: 'outline',
-      color: 'from-primary-navy to-primary-navy-dark',
-    },
-    {
-      icon: Users,
-      title: 'Join Our Programs',
-      description: 'Explore our programs and apply for skills training, employment opportunities, or educational support.',
-      link: '/programs',
-      variant: 'outline',
-      color: 'from-green-500 to-emerald-600',
-    },
-  ]
+  const { content } = useHomeContent()
+  const cta = content.callToAction
+  const actions = cta.actions.map((action, i) => ({ ...action, icon: actionIcons[i] }))
 
   return (
     <section className="section-padding bg-gradient-to-br from-primary-navy via-primary-navy-dark to-primary-navy text-white relative overflow-hidden">
@@ -82,10 +62,10 @@ const CallToAction = () => {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight">
-              Get Involved Today
+              {cta.title}
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl text-neutral-200 max-w-3xl mx-auto leading-relaxed">
-              Join us in making a real difference. Whether you donate, volunteer, or join our programs, your participation creates lasting positive change.
+              {cta.subtitle}
             </p>
           </motion.div>
 
@@ -116,7 +96,7 @@ const CallToAction = () => {
                       size="md"
                       className="w-full bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary-navy"
                     >
-                      Get Started
+                      {cta.getStartedButtonText}
                       <ArrowRight className="ml-2" size={18} />
                     </Button>
                   </div>
@@ -134,18 +114,12 @@ const CallToAction = () => {
             className="text-center"
           >
             <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-6 lg:gap-8 px-6 md:px-10 py-4 md:py-5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <div className="flex items-center space-x-2">
-                <Sparkles className="text-accent-orange" size={16} />
-                <span className="text-xs md:text-sm font-medium">100% Transparent</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Sparkles className="text-accent-orange" size={16} />
-                <span className="text-xs md:text-sm font-medium">Verified NGO</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Sparkles className="text-accent-orange" size={16} />
-                <span className="text-xs md:text-sm font-medium">Tax Deductible</span>
-              </div>
+              {cta.trustBadges.map((label, i) => (
+                <div key={i} className="flex items-center space-x-2">
+                  <Sparkles className="text-accent-orange" size={16} />
+                  <span className="text-xs md:text-sm font-medium">{label}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

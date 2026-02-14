@@ -12,7 +12,7 @@
   }
   
   body {
-    @apply bg-white text-neutral-900 font-sans antialiased;
+    @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-sans antialiased transition-colors duration-300;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -26,7 +26,7 @@
   }
   
   p {
-    @apply text-neutral-700;
+    @apply text-neutral-700 dark:text-neutral-300;
     line-height: 1.75;
   }
 }
@@ -45,11 +45,11 @@
   }
   
   .btn-outline {
-    @apply border-2 border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white focus:ring-primary-navy bg-white hover:scale-105 active:scale-95;
+    @apply border-2 border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white focus:ring-primary-navy bg-white dark:bg-transparent dark:border-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-white hover:scale-105 active:scale-95;
   }
   
   .btn-ghost {
-    @apply text-primary-navy hover:bg-neutral-100 focus:ring-primary-navy;
+    @apply text-primary-navy hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800 focus:ring-primary-navy;
   }
   
   .container-custom {
@@ -61,7 +61,7 @@
   }
   
   .card {
-    @apply bg-white rounded-2xl shadow-sm p-8 transition-all duration-300 hover:shadow-xl border border-neutral-100;
+    @apply bg-white dark:bg-neutral-800 rounded-2xl shadow-sm p-8 transition-all duration-300 hover:shadow-xl border border-neutral-100 dark:border-neutral-700;
   }
   
   .card-hover {
@@ -73,11 +73,11 @@
   }
   
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-primary-navy mb-6;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-primary-navy dark:text-white mb-6;
   }
   
   .section-subtitle {
-    @apply text-xl md:text-2xl text-neutral-600 max-w-3xl;
+    @apply text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 max-w-3xl;
   }
   
   .text-gradient {
@@ -88,6 +88,16 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Skip link - visible on focus for accessibility */
+  .skip-link:focus {
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    white-space: normal;
   }
   
   .glass-effect {
@@ -105,20 +115,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-neutral-50;
+  @apply bg-neutral-50 dark:bg-neutral-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-neutral-300 rounded-full;
+  @apply bg-neutral-300 dark:bg-neutral-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-neutral-400;
+  @apply bg-neutral-400 dark:bg-neutral-500;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-accent-orange/20 text-primary-navy;
+  @apply bg-accent-orange/20 text-primary-navy dark:text-white;
 }
 
 /* Focus styles */
@@ -129,6 +139,31 @@
 /* Smooth transitions for interactive elements */
 button, a, input, textarea, select {
   @apply transition-colors duration-200;
+}
+
+/* Dark mode - explicit styles (guaranteed to work) */
+html.dark {
+  color-scheme: dark;
+}
+html.dark body {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+html.dark #root,
+html.dark #root > * {
+  background-color: #111827 !important;
+}
+/* Form controls in dark mode */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af;
 }
 
 /* Reduced motion for accessibility */

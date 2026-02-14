@@ -5,7 +5,7 @@ import Button from '../components/ui/Button'
 
 const Volunteer = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -27,7 +27,7 @@ const Volunteer = () => {
       </section>
 
       {/* Redirect Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ const Volunteer = () => {
             transition={{ duration: 0.6 }}
             className="text-center py-20"
           >
-            <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
               To volunteer with us, please visit our Get Involved page where you can fill out the volunteer application form.
             </p>
             <Button as={Link} to="/get-involved" variant="primary" size="lg">

@@ -32,7 +32,7 @@ const AboutPreview = () => {
   ]
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
+    <section className="section-padding bg-white dark:bg-neutral-900 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -53,10 +53,10 @@ const AboutPreview = () => {
           <span className="inline-block px-4 py-2 bg-accent-orange/10 text-accent-orange rounded-full text-sm font-semibold mb-4">
             About Us
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-navy mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-navy dark:text-white mb-4">
             Building Hope, Creating Impact
           </h2>
-          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
             King E Obamedo Foundation is a trusted non-profit organization dedicated to empowering communities across Nigeria through comprehensive programs in education, healthcare, and economic development.
           </p>
         </motion.div>
@@ -90,13 +90,13 @@ const AboutPreview = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-bold text-primary-navy mb-6">
+            <h3 className="text-3xl font-bold text-primary-navy dark:text-white mb-6">
               Making a Difference Every Day
             </h3>
-            <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
+            <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
               Founded with a vision to create lasting change, King E Obamedo Foundation has been at the forefront of community development in Nigeria. We believe in the power of education, healthcare, and economic empowerment to transform lives.
             </p>
-            <p className="text-base text-neutral-600 mb-8 leading-relaxed">
+            <p className="text-base text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
               Through our comprehensive programs, we've touched thousands of lives, providing access to quality education, healthcare services, and economic opportunities. Our commitment to transparency, accountability, and measurable impact drives everything we do.
             </p>
             
@@ -105,10 +105,10 @@ const AboutPreview = () => {
               {achievements.map((achievement, index) => {
                 const Icon = achievement.icon
                 return (
-                  <div key={index} className="text-center p-4 bg-neutral-50 rounded-xl">
+                  <div key={index} className="text-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-xl">
                     <Icon className="w-8 h-8 text-accent-orange mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-primary-navy">{achievement.number}</div>
-                    <div className="text-xs text-neutral-600 mt-1">{achievement.label}</div>
+                    <div className="text-2xl font-bold text-primary-navy dark:text-white">{achievement.number}</div>
+                    <div className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">{achievement.label}</div>
                   </div>
                 )
               })}
@@ -132,15 +132,15 @@ const AboutPreview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="group relative p-8 bg-gradient-to-br from-white to-neutral-50 rounded-2xl border border-neutral-200 hover:border-accent-orange/30 hover:shadow-lg transition-all duration-300"
+                className="group relative p-8 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-lg transition-all duration-300"
               >
                 <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
                   <Icon className="text-white" size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-primary-navy mb-3">
+                <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-3">
                   {value.title}
                 </h3>
-                <p className="text-neutral-600 leading-relaxed">
+                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>

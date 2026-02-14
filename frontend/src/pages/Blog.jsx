@@ -5,7 +5,7 @@ import Button from '../components/ui/Button'
 
 const Blog = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -27,7 +27,7 @@ const Blog = () => {
       </section>
 
       {/* Coming Soon Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,8 +39,8 @@ const Blog = () => {
             <div className="inline-flex items-center justify-center w-32 h-32 bg-accent-orange/10 rounded-full mb-8">
               <BookOpen className="text-accent-orange" size={64} />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy mb-6">Coming Soon</h2>
-            <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy dark:text-white mb-6">Coming Soon</h2>
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
               We're working on bringing you inspiring stories, impact updates, and news from our programs. Check back soon!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../../context/LanguageContext'
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Building2 } from 'lucide-react'
 
 const Footer = () => {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   const footerLinks = {
@@ -56,12 +58,12 @@ const Footer = () => {
                   <span className="text-white">Foundation</span>
                 </h3>
                 <p className="text-xs text-neutral-300 font-medium tracking-wide mt-1">
-                  Empowering Communities, Transforming Lives
+                  {t('footer.tagline')}
                 </p>
               </div>
             </Link>
             <p className="text-neutral-300 text-xs mb-4 leading-relaxed max-w-xs">
-              Empowering communities and transforming lives across Nigeria.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-2">
               {socialLinks.map((social) => {
@@ -70,8 +72,10 @@ const Footer = () => {
                   <a
                     key={social.label}
                     href={social.href}
-                    aria-label={social.label}
-                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-accent-orange flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    aria-label={`Follow us on ${social.label}`}
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-accent-orange flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:ring-offset-2 focus:ring-offset-primary-navy"
                   >
                     <Icon size={14} />
                   </a>
@@ -82,7 +86,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">About</h4>
+            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">{t('footer.about')}</h4>
             <ul className="space-y-2">
               {footerLinks.about.map((link) => (
                 <li key={link.path}>
@@ -98,7 +102,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">Programs</h4>
+            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">{t('footer.programs')}</h4>
             <ul className="space-y-2">
               {footerLinks.programs.map((link) => (
                 <li key={link.path}>
@@ -115,7 +119,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">Contact</h4>
+            <h4 className="text-xs font-bold mb-3 text-white uppercase tracking-wider">{t('footer.contact')}</h4>
             <div className="space-y-2.5">
               <div className="flex items-start space-x-2">
                 <MapPin size={12} className="mt-0.5 text-accent-orange flex-shrink-0" />
@@ -170,13 +174,13 @@ const Footer = () => {
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-end">
               <Link to="/privacy" className="text-neutral-400 hover:text-accent-orange text-xs transition-colors">
-                Privacy
+                {t('footer.privacy')}
               </Link>
               <Link to="/terms" className="text-neutral-400 hover:text-accent-orange text-xs transition-colors">
-                Terms
+                {t('footer.terms')}
               </Link>
               <Link to="/contact" className="text-neutral-400 hover:text-accent-orange text-xs transition-colors">
-                Contact
+                {t('footer.contact')}
               </Link>
             </div>
           </div>

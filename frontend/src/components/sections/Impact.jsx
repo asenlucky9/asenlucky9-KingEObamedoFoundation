@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { Users, GraduationCap, Heart, Building2, TrendingUp } from 'lucide-react'
+import { useHomeContent } from '../../context/HomeContentContext'
 
 const Counter = ({ end, duration = 2, isInView }) => {
   const [count, setCount] = useState(0)
@@ -30,37 +31,12 @@ const Counter = ({ end, duration = 2, isInView }) => {
 const Impact = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
-
-  const stats = [
-    {
-      icon: Users,
-      value: '10,000+',
-      label: 'Lives Touched',
-      description: 'People directly impacted',
-      gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-      icon: GraduationCap,
-      value: '5,000+',
-      label: 'Children Educated',
-      description: 'Students supported',
-      gradient: 'from-green-500 to-emerald-500',
-    },
-    {
-      icon: Heart,
-      value: '200+',
-      label: 'Programs Completed',
-      description: 'Successful initiatives',
-      gradient: 'from-red-500 to-pink-500',
-    },
-    {
-      icon: Building2,
-      value: '50+',
-      label: 'Partners',
-      description: 'Trusted organizations',
-      gradient: 'from-purple-500 to-indigo-500',
-    },
-  ]
+  const { content } = useHomeContent()
+  const { impact } = content
+  const stats = impact.stats.map((s, i) => ({
+    ...s,
+    icon: [Users, GraduationCap, Heart, Building2][i],
+  }))
 
   return (
     <section ref={ref} className="section-padding bg-gradient-to-br from-primary-navy via-primary-navy-dark to-primary-navy text-white relative overflow-hidden">
@@ -81,13 +57,13 @@ const Impact = () => {
           className="text-center mb-16 md:mb-20"
         >
           <span className="inline-block px-5 py-2.5 bg-accent-orange/20 text-accent-orange rounded-full text-sm font-semibold mb-6">
-            Our Impact
+            {impact.badge}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Making a Real Difference
+            {impact.heading}
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl text-neutral-200 max-w-3xl mx-auto leading-relaxed">
-            Together, we're creating lasting change in communities across Nigeria. Every number represents a life transformed.
+            {impact.subtext}
           </p>
         </motion.div>
 
@@ -134,7 +110,7 @@ const Impact = () => {
         >
           <div className="inline-flex items-center space-x-3 px-6 md:px-8 py-3 md:py-4 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl border border-white/20">
             <TrendingUp className="text-accent-orange" size={20} />
-            <span className="text-base md:text-lg font-semibold">Growing impact every day</span>
+            <span className="text-base md:text-lg font-semibold">{impact.footerBadge}</span>
           </div>
         </motion.div>
       </div>

@@ -1,36 +1,13 @@
 import { motion } from 'framer-motion'
 import { Quote, Star } from 'lucide-react'
+import { useHomeContent } from '../../context/HomeContentContext'
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Amina Hassan',
-      role: 'Beneficiary',
-      location: 'Lagos',
-      content: 'The foundation provided my children with scholarships that changed our lives completely. Today, they are pursuing their dreams in university. We are forever grateful.',
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: 'John Okonkwo',
-      role: 'Community Leader',
-      location: 'Abuja',
-      content: 'Their programs brought real change to our community. Many families received support and opportunities they never had before. This is genuine impact.',
-      rating: 5,
-    },
-    {
-      id: 3,
-      name: 'Fatima Ibrahim',
-      role: 'Volunteer',
-      location: 'Kano',
-      content: 'Volunteering with this foundation has been life-changing. I see the real impact we make every day. The transparency and dedication of the team is remarkable.',
-      rating: 5,
-    },
-  ]
+  const { content } = useHomeContent()
+  const { badge, title, subtitle, items: testimonials } = content.testimonials
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-navy/5 rounded-full blur-3xl"></div>
@@ -44,13 +21,13 @@ const Testimonials = () => {
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-5 py-2.5 bg-accent-orange/10 text-accent-orange rounded-full text-sm font-semibold mb-6">
-            Testimonials
+            {badge}
           </span>
           <h2 className="section-title text-center mb-6">
-            Stories of Transformation
+            {title}
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            Real stories from people whose lives have been touched by our work.
+            {subtitle}
           </p>
         </motion.div>
 
@@ -64,7 +41,7 @@ const Testimonials = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="relative group"
             >
-              <div className="relative p-8 bg-white rounded-3xl border border-neutral-100 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300 h-full">
+              <div className="relative p-8 bg-white dark:bg-neutral-800 rounded-3xl border border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300 h-full">
                 {/* Quote Icon */}
                 <Quote className="absolute top-6 right-6 text-accent-orange/10 group-hover:text-accent-orange/20 transition-colors" size={48} />
 
@@ -76,7 +53,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Content */}
-                <p className="text-neutral-700 mb-8 leading-relaxed text-lg">
+                <p className="text-neutral-700 dark:text-neutral-300 mb-8 leading-relaxed text-lg">
                   "{testimonial.content}"
                 </p>
 

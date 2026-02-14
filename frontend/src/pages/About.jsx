@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { Calendar, Target, TrendingUp, Award, Users, Heart, GraduationCap, Briefcase, MapPin, Mail, Phone, Building2 } from 'lucide-react'
 
 const About = () => {
+  useDocumentTitle('About Us')
   const history = [
     {
       year: '2020',
@@ -118,7 +120,7 @@ const About = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -137,7 +139,7 @@ const About = () => {
       </section>
 
       {/* Founder Story */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div
@@ -172,30 +174,30 @@ const About = () => {
               <span className="inline-block px-5 py-2.5 bg-accent-orange/10 text-accent-orange rounded-full text-sm font-semibold mb-6">
                 Our Founder
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-primary-navy mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary-navy dark:text-white mb-6">
                 King E. Obamedo
               </h2>
-              <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
                 King E. Obamedo Foundation was established by a visionary leader with a strong background in accounting, taxation, and business. With professional experience at leading firms like PwC and Intuit, King brings a unique combination of financial expertise and business acumen to community development.
               </p>
-              <p className="text-base text-neutral-600 mb-8 leading-relaxed">
+              <p className="text-base text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
                 Driven by a passion for empowerment and social justice, the foundation was built on the belief that every individual deserves access to education, employment opportunities, and the resources needed to build a prosperous future. King's commitment to transparency, accountability, and measurable impact continues to guide our work today.
               </p>
               
               {/* Contact Info */}
-              <div className="grid sm:grid-cols-2 gap-4 p-6 bg-neutral-50 rounded-2xl border border-neutral-200">
+              <div className="grid sm:grid-cols-2 gap-4 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700">
                 <div className="flex items-start space-x-3">
                   <MapPin className="text-accent-orange flex-shrink-0 mt-1" size={18} />
                   <div>
-                    <p className="text-sm font-semibold text-primary-navy mb-1">Headquarters</p>
-                    <p className="text-xs text-neutral-600">8 Obamedo Lane, Off Mission RD<br />Benin City, Edo State</p>
+                    <p className="text-sm font-semibold text-primary-navy dark:text-white mb-1">Headquarters</p>
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400">8 Obamedo Lane, Off Mission RD<br />Benin City, Edo State</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Building2 className="text-accent-orange flex-shrink-0 mt-1" size={18} />
                   <div>
-                    <p className="text-sm font-semibold text-primary-navy mb-1">Branch Office</p>
-                    <p className="text-xs text-neutral-600">Okungbowa House, Ugbogui-Ikoha RD<br />Ugbogui Town, Ovia SW</p>
+                    <p className="text-sm font-semibold text-primary-navy dark:text-white mb-1">Branch Office</p>
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400">Okungbowa House, Ugbogui-Ikoha RD<br />Ugbogui Town, Ovia SW</p>
                   </div>
                 </div>
               </div>
@@ -210,25 +212,25 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 bg-gradient-to-br from-white to-neutral-50 rounded-3xl border-2 border-neutral-100"
+              className="p-8 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 rounded-3xl border-2 border-neutral-100 dark:border-neutral-700"
             >
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
                   <GraduationCap className="text-blue-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-primary-navy">Education</h3>
+                <h3 className="text-2xl font-bold text-primary-navy dark:text-white">Education</h3>
               </div>
               <div className="space-y-6">
                 {education.map((edu, index) => {
                   const Icon = edu.icon
                   return (
-                    <div key={index} className="pb-6 border-b border-neutral-200 last:border-0 last:pb-0">
+                    <div key={index} className="pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0 last:pb-0">
                       <div className="flex items-start justify-between mb-2">
-                        <h4 className="font-bold text-primary-navy">{edu.degree}</h4>
-                        <span className="text-xs text-neutral-500 font-medium">{edu.year}</span>
+                        <h4 className="font-bold text-primary-navy dark:text-white">{edu.degree}</h4>
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{edu.year}</span>
                       </div>
-                      <p className="text-sm text-neutral-600 font-medium">{edu.school}</p>
-                      <p className="text-xs text-neutral-500 mt-1">{edu.location}</p>
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 font-medium">{edu.school}</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">{edu.location}</p>
                     </div>
                   )
                 })}
@@ -241,23 +243,23 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="p-8 bg-gradient-to-br from-white to-neutral-50 rounded-3xl border-2 border-neutral-100"
+              className="p-8 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 rounded-3xl border-2 border-neutral-100 dark:border-neutral-700"
             >
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
                   <Award className="text-green-600" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-primary-navy">Licenses & Certifications</h3>
+                <h3 className="text-2xl font-bold text-primary-navy dark:text-white">Licenses & Certifications</h3>
               </div>
               <div className="space-y-6">
                 {certifications.map((cert, index) => {
                   const Icon = cert.icon
                   return (
-                    <div key={index} className="pb-6 border-b border-neutral-200 last:border-0 last:pb-0">
+                    <div key={index} className="pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0 last:pb-0">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h4 className="font-bold text-primary-navy mb-1">{cert.title}</h4>
-                          <p className="text-xs text-neutral-500">{cert.date}</p>
+                          <h4 className="font-bold text-primary-navy dark:text-white mb-1">{cert.title}</h4>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-400">{cert.date}</p>
                         </div>
                         <div className="w-10 h-10 bg-accent-orange/10 rounded-lg flex items-center justify-center">
                           <Icon className="text-accent-orange" size={20} />
@@ -279,8 +281,8 @@ const About = () => {
             className="mb-20"
           >
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold text-primary-navy mb-4">Professional Experience</h3>
-              <p className="text-lg text-neutral-600">Building expertise to serve communities better</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-4">Professional Experience</h3>
+              <p className="text-lg text-neutral-600 dark:text-neutral-400">Building expertise to serve communities better</p>
             </div>
             <div className="space-y-6">
               {experience.map((exp, index) => {
@@ -292,7 +294,7 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-8 bg-white rounded-2xl border-2 border-neutral-100 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300"
+                    className="p-8 bg-white dark:bg-neutral-800 rounded-2xl border-2 border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-start space-x-4">
@@ -300,14 +302,14 @@ const About = () => {
                           <Icon className="text-accent-orange" size={24} />
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold text-primary-navy mb-1">{exp.position}</h4>
-                          <p className="text-lg font-semibold text-neutral-700">{exp.company}</p>
-                          <p className="text-sm text-neutral-500">{exp.location}</p>
+                          <h4 className="text-xl font-bold text-primary-navy dark:text-white mb-1">{exp.position}</h4>
+                          <p className="text-lg font-semibold text-neutral-700 dark:text-neutral-300">{exp.company}</p>
+                          <p className="text-sm text-neutral-500 dark:text-neutral-400">{exp.location}</p>
                         </div>
                       </div>
-                      <span className="text-sm font-medium text-neutral-500 bg-neutral-100 px-3 py-1 rounded-full">{exp.period}</span>
+                      <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-700 px-3 py-1 rounded-full">{exp.period}</span>
                     </div>
-                    <p className="text-neutral-600 leading-relaxed mt-4">{exp.description}</p>
+                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mt-4">{exp.description}</p>
                   </motion.div>
                 )
               })}
@@ -317,7 +319,7 @@ const About = () => {
       </section>
 
       {/* History Timeline */}
-      <section className="section-padding bg-neutral-50">
+      <section className="section-padding bg-neutral-50 dark:bg-neutral-800">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,13 +328,13 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-5 py-2.5 bg-primary-navy/10 text-primary-navy rounded-full text-sm font-semibold mb-6">
+            <span className="inline-block px-5 py-2.5 bg-primary-navy/10 text-primary-navy dark:bg-white/10 dark:text-white rounded-full text-sm font-semibold mb-6">
               Our Journey
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy dark:text-white mb-4">
               Foundation History
             </h2>
-            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
               A timeline of our growth and impact over the years.
             </p>
           </motion.div>
@@ -351,13 +353,13 @@ const About = () => {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   className="relative pl-28"
                 >
-                  <div className="absolute left-0 w-20 h-20 bg-gradient-to-br from-accent-orange to-orange-600 rounded-full flex items-center justify-center shadow-xl border-4 border-white">
+                  <div className="absolute left-0 w-20 h-20 bg-gradient-to-br from-accent-orange to-orange-600 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-neutral-800">
                     <Calendar className="text-white" size={24} />
                   </div>
-                  <div className="bg-white p-8 rounded-2xl border-2 border-neutral-100 hover:border-accent-orange/30 hover:shadow-xl transition-all">
+                  <div className="bg-white dark:bg-neutral-800 p-8 rounded-2xl border-2 border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-xl transition-all">
                     <div className="text-2xl font-bold text-accent-orange mb-2">{item.year}</div>
-                    <h3 className="text-xl font-semibold text-primary-navy mb-3">{item.title}</h3>
-                    <p className="text-neutral-600">{item.description}</p>
+                    <h3 className="text-xl font-semibold text-primary-navy dark:text-white mb-3">{item.title}</h3>
+                    <p className="text-neutral-600 dark:text-neutral-400">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -367,7 +369,7 @@ const About = () => {
       </section>
 
       {/* Goals & Impact */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -379,10 +381,10 @@ const About = () => {
             <span className="inline-block px-5 py-2.5 bg-accent-orange/10 text-accent-orange rounded-full text-sm font-semibold mb-6">
               Our Goals
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-navy dark:text-white mb-4">
               Goals & Future Impact
             </h2>
-            <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Our vision for the future and the goals we're working towards.
             </p>
           </motion.div>
@@ -397,13 +399,13 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="p-8 bg-gradient-to-br from-white to-neutral-50 rounded-2xl border-2 border-neutral-100 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300"
+                  className="p-8 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 rounded-2xl border-2 border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="w-16 h-16 bg-accent-orange/10 rounded-xl flex items-center justify-center mb-6">
                     <Icon className="text-accent-orange" size={28} />
                   </div>
-                  <h3 className="text-xl font-bold text-primary-navy mb-3">{goal.title}</h3>
-                  <p className="text-neutral-600 leading-relaxed">{goal.description}</p>
+                  <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-3">{goal.title}</h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">{goal.description}</p>
                 </motion.div>
               )
             })}

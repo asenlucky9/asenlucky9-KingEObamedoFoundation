@@ -7,7 +7,7 @@ const BlogPost = () => {
   const { slug } = useParams()
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -33,7 +33,7 @@ const BlogPost = () => {
       </section>
 
       {/* Content Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -43,8 +43,8 @@ const BlogPost = () => {
             className="text-center py-20"
           >
             <BookOpen className="w-24 h-24 text-neutral-300 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-primary-navy mb-4">Post Not Found</h2>
-            <p className="text-lg text-neutral-600 mb-8">
+            <h2 className="text-3xl font-bold text-primary-navy dark:text-white mb-4">Post Not Found</h2>
+            <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
               The blog post you're looking for doesn't exist yet.
             </p>
             <Button as={Link} to="/blog" variant="primary">

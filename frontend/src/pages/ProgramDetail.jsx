@@ -10,10 +10,10 @@ const ProgramDetail = () => {
 
   if (!program) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-neutral-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-primary-navy mb-4">Program Not Found</h1>
-          <p className="text-neutral-600 mb-8">The program you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-primary-navy dark:text-white mb-4">Program Not Found</h1>
+          <p className="text-neutral-600 dark:text-neutral-400 mb-8">The program you're looking for doesn't exist.</p>
           <Button as={Link} to="/programs" variant="primary">
             View All Programs
           </Button>
@@ -25,7 +25,7 @@ const ProgramDetail = () => {
   const Icon = program.icon
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className={`relative bg-gradient-to-br ${program.color} text-white py-24 md:py-32`}>
         <div className="container-custom">
@@ -80,7 +80,7 @@ const ProgramDetail = () => {
       </section>
 
       {/* Content Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom max-w-6xl">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
@@ -94,7 +94,7 @@ const ProgramDetail = () => {
                   transition={{ duration: 0.6 }}
                   className="mb-12"
                 >
-                  <h3 className="text-2xl font-bold text-primary-navy mb-6">Program Gallery</h3>
+                  <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-6">Program Gallery</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {program.images.slice(0, 2).map((image, index) => (
                       <motion.div
@@ -103,7 +103,7 @@ const ProgramDetail = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.5 }}
-                        className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer bg-neutral-100"
+                        className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer bg-neutral-100 dark:bg-neutral-800"
                       >
                         <div className="aspect-[4/3] relative overflow-hidden">
                           <div className="img-fallback hidden absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
@@ -139,8 +139,8 @@ const ProgramDetail = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-12"
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-navy mb-6">About This Program</h2>
-                <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-6">About This Program</h2>
+                <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
                   {program.fullDescription}
                 </p>
               </motion.div>
@@ -153,12 +153,12 @@ const ProgramDetail = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mb-12"
               >
-                <h3 className="text-2xl font-bold text-primary-navy mb-6">Program Features</h3>
+                <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-6">Program Features</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {program.features.map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-4 bg-neutral-50 rounded-xl">
+                    <div key={index} className="flex items-start space-x-3 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-xl">
                       <CheckCircle2 className="text-accent-orange flex-shrink-0 mt-0.5" size={20} />
-                      <span className="text-neutral-700">{feature}</span>
+                      <span className="text-neutral-700 dark:text-neutral-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -171,12 +171,12 @@ const ProgramDetail = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <h3 className="text-2xl font-bold text-primary-navy mb-6">Benefits</h3>
+                <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-6">Benefits</h3>
                 <div className="space-y-4">
                   {program.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-4 bg-gradient-to-r from-neutral-50 to-white rounded-xl border border-neutral-200">
+                    <div key={index} className="flex items-start space-x-3 p-4 bg-gradient-to-r from-neutral-50 to-white dark:from-neutral-800 dark:to-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700">
                       <Award className="text-accent-orange flex-shrink-0 mt-0.5" size={20} />
-                      <span className="text-neutral-700">{benefit}</span>
+                      <span className="text-neutral-700 dark:text-neutral-300">{benefit}</span>
                     </div>
                   ))}
                 </div>
@@ -192,9 +192,9 @@ const ProgramDetail = () => {
                 transition={{ duration: 0.6 }}
                 className="sticky top-24"
               >
-                <div className={`${program.bgColor} p-8 rounded-2xl border-2 border-neutral-200`}>
-                  <h3 className="text-2xl font-bold text-primary-navy mb-6">Get Involved</h3>
-                  <p className="text-neutral-700 mb-6">
+                <div className={`${program.bgColor} p-8 rounded-2xl border-2 border-neutral-200 dark:border-neutral-700`}>
+                  <h3 className="text-2xl font-bold text-primary-navy dark:text-white mb-6">Get Involved</h3>
+                  <p className="text-neutral-700 dark:text-neutral-300 mb-6">
                     Interested in this program? Learn how you can participate or support our work.
                   </p>
                   <div className="space-y-4">
@@ -209,20 +209,20 @@ const ProgramDetail = () => {
                     </Button>
                   </div>
 
-                  <div className="mt-8 pt-8 border-t border-neutral-300">
-                    <h4 className="font-semibold text-primary-navy mb-4">Program Details</h4>
+                    <div className="mt-8 pt-8 border-t border-neutral-300 dark:border-neutral-600">
+                    <h4 className="font-semibold text-primary-navy dark:text-white mb-4">Program Details</h4>
                     <div className="space-y-3 text-sm">
                       <div className="flex items-center space-x-2">
                         <Calendar className="text-accent-orange" size={16} />
-                        <span className="text-neutral-700"><strong>Duration:</strong> {program.duration}</span>
+                        <span className="text-neutral-700 dark:text-neutral-300"><strong>Duration:</strong> {program.duration}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <MapPin className="text-accent-orange" size={16} />
-                        <span className="text-neutral-700"><strong>Location:</strong> {program.location}</span>
+                        <span className="text-neutral-700 dark:text-neutral-300"><strong>Location:</strong> {program.location}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <UsersIcon className="text-accent-orange" size={16} />
-                        <span className="text-neutral-700"><strong>Participants:</strong> {program.participants}</span>
+                        <span className="text-neutral-700 dark:text-neutral-300"><strong>Participants:</strong> {program.participants}</span>
                       </div>
                     </div>
                   </div>

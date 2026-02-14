@@ -41,7 +41,7 @@ const MissionVision = () => {
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary-navy/5 rounded-full blur-3xl"></div>
@@ -79,14 +79,14 @@ const MissionVision = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="group"
               >
-                <div className="h-full p-10 bg-white rounded-3xl border-2 border-neutral-100 hover:border-accent-orange/30 hover:shadow-2xl transition-all duration-300">
+                <div className="h-full p-10 bg-white dark:bg-neutral-800 rounded-3xl border-2 border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-2xl transition-all duration-300">
                   <div className={`w-20 h-20 bg-gradient-to-br ${item.color} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-xl`}>
                     <Icon className="text-white" size={36} />
                   </div>
-                  <h3 className="text-3xl font-bold text-primary-navy mb-5">
+                  <h3 className="text-3xl font-bold text-primary-navy dark:text-white mb-5">
                     {item.title}
                   </h3>
-                  <p className="text-neutral-600 leading-relaxed text-lg">
+                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-lg">
                     {item.description}
                   </p>
                 </div>
@@ -103,8 +103,8 @@ const MissionVision = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-primary-navy mb-4">Our Core Values</h3>
-          <p className="text-lg text-neutral-600">The principles that guide everything we do</p>
+          <h3 className="text-3xl md:text-4xl font-bold text-primary-navy dark:text-white mb-4">Our Core Values</h3>
+          <p className="text-lg text-neutral-600 dark:text-neutral-400">The principles that guide everything we do</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -117,15 +117,15 @@ const MissionVision = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
-                className="text-center p-8 bg-white rounded-2xl border border-neutral-100 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300 group"
+                className="text-center p-8 bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-100 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="w-16 h-16 bg-accent-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent-orange/20 transition-colors">
                   <Icon className="text-accent-orange" size={28} />
                 </div>
-                <h4 className="text-xl font-bold text-primary-navy mb-3">
+                <h4 className="text-xl font-bold text-primary-navy dark:text-white mb-3">
                   {value.title}
                 </h4>
-                <p className="text-neutral-600 text-sm leading-relaxed">
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>

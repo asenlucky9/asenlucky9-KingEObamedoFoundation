@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion'
 import { Handshake } from 'lucide-react'
+import { useHomeContent } from '../../context/HomeContentContext'
 
 const Partners = () => {
-  const partners = []
+  const { content } = useHomeContent()
+  const { badge, title, subtitle, items: partners, emptyMessage } = content.partners
 
   return (
-    <section className="section-padding bg-neutral-50 relative overflow-hidden">
+    <section className="section-padding bg-neutral-50 dark:bg-neutral-900 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary-navy/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl"></div>
@@ -20,13 +22,13 @@ const Partners = () => {
         >
           <span className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary-navy/10 text-primary-navy rounded-full text-sm font-semibold mb-6">
             <Handshake size={16} />
-            <span>Our Partners</span>
+            <span>{badge}</span>
           </span>
           <h2 className="section-title text-center mb-6">
-            Trusted by Leading Organizations
+            {title}
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            We work with dedicated partners who share our vision of creating lasting positive change.
+            {subtitle}
           </p>
         </motion.div>
 
@@ -41,7 +43,7 @@ const Partners = () => {
                 transition={{ delay: index * 0.05, duration: 0.5 }}
                 className="group"
               >
-                <div className="flex items-center justify-center p-6 bg-white rounded-2xl border border-neutral-200 hover:border-accent-orange/30 hover:shadow-md transition-all duration-300 h-32">
+                <div className="flex items-center justify-center p-6 bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 hover:border-accent-orange/30 hover:shadow-md transition-all duration-300 h-32">
                   <img
                     src={partner.logo}
                     alt={partner.name}
@@ -55,9 +57,9 @@ const Partners = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="col-span-full text-center text-neutral-500 py-8"
+              className="col-span-full text-center text-neutral-500 dark:text-neutral-400 py-8"
             >
-              Partners will be listed here as they join our mission.
+              {emptyMessage}
             </motion.p>
           )}
         </div>

@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Search, Filter } from 'lucide-react'
 import { programs, programCategories } from '../data/programsData'
 
 const Programs = () => {
+  useDocumentTitle('Programs')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
@@ -16,7 +18,7 @@ const Programs = () => {
   })
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -35,7 +37,7 @@ const Programs = () => {
       </section>
 
       {/* Programs Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom">
           {/* Search and Filter */}
           <div className="mb-12">
@@ -47,7 +49,7 @@ const Programs = () => {
                   placeholder="Search programs..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border-2 border-neutral-200 rounded-xl focus:border-accent-orange focus:outline-none"
+                  className="w-full pl-12 pr-4 py-3 border-2 border-neutral-200 dark:border-neutral-600 rounded-xl focus:border-accent-orange focus:outline-none bg-white dark:bg-neutral-800 dark:text-white"
                 />
               </div>
               <div className="relative">
@@ -55,7 +57,7 @@ const Programs = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="pl-12 pr-10 py-3 border-2 border-neutral-200 rounded-xl focus:border-accent-orange focus:outline-none appearance-none bg-white"
+                  className="pl-12 pr-10 py-3 border-2 border-neutral-200 dark:border-neutral-600 rounded-xl focus:border-accent-orange focus:outline-none appearance-none bg-white dark:bg-neutral-800 dark:text-white"
                 >
                   {programCategories.map(cat => (
                     <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -63,7 +65,7 @@ const Programs = () => {
                 </select>
               </div>
             </div>
-            <p className="text-neutral-600">
+            <p className="text-neutral-600 dark:text-neutral-400">
               Showing {filteredPrograms.length} program{filteredPrograms.length !== 1 ? 's' : ''}
             </p>
           </div>
@@ -82,17 +84,17 @@ const Programs = () => {
                   className="group"
                 >
                   <Link to={`/programs/${program.id}`} className="block h-full">
-                    <div className="h-full p-8 bg-gradient-to-br from-white to-neutral-50 rounded-2xl border-2 border-neutral-200 hover:border-accent-orange transition-all duration-300 hover:shadow-xl group-hover:-translate-y-2">
+                    <div className="h-full p-8 bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-800 dark:to-neutral-800 rounded-2xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-accent-orange transition-all duration-300 hover:shadow-xl group-hover:-translate-y-2">
                       {/* Icon */}
                       <div className={`w-16 h-16 bg-gradient-to-br ${program.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
                         <Icon className="text-white" size={28} />
                       </div>
 
                       {/* Content */}
-                      <h3 className="text-xl font-bold text-primary-navy mb-3 group-hover:text-accent-orange transition-colors">
+                      <h3 className="text-xl font-bold text-primary-navy dark:text-white mb-3 group-hover:text-accent-orange transition-colors">
                         {program.title}
                       </h3>
-                      <p className="text-neutral-600 mb-6 leading-relaxed text-sm">
+                      <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-sm">
                         {program.description}
                       </p>
 
@@ -100,7 +102,7 @@ const Programs = () => {
                       <div className="mb-6">
                         <div className="flex flex-wrap gap-2">
                           {program.features.slice(0, 2).map((feature, idx) => (
-                            <span key={idx} className="px-3 py-1 bg-neutral-100 text-neutral-700 text-xs rounded-full">
+                            <span key={idx} className="px-3 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs rounded-full">
                               {feature}
                             </span>
                           ))}
@@ -108,12 +110,12 @@ const Programs = () => {
                       </div>
 
                       {/* Footer */}
-                      <div className="flex items-center justify-between pt-4 border-t border-neutral-200">
+                      <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-700">
                         <span className="text-sm font-semibold text-accent-orange">
                           {program.impact}
                         </span>
-                        <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-accent-orange group-hover:text-white flex items-center justify-center transition-colors">
-                          <ArrowRight size={16} className="text-neutral-600 group-hover:text-white" />
+                        <div className="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-700 group-hover:bg-accent-orange group-hover:text-white flex items-center justify-center transition-colors">
+                          <ArrowRight size={16} className="text-neutral-600 dark:text-neutral-300 group-hover:text-white" />
                         </div>
                       </div>
                     </div>
@@ -125,8 +127,8 @@ const Programs = () => {
 
           {filteredPrograms.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-xl text-neutral-600 mb-4">No programs found</p>
-              <p className="text-neutral-500">Try adjusting your search or filter criteria</p>
+              <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-4">No programs found</p>
+              <p className="text-neutral-500 dark:text-neutral-500">Try adjusting your search or filter criteria</p>
             </div>
           )}
         </div>

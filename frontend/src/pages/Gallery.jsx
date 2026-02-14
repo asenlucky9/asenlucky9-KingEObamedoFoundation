@@ -11,7 +11,7 @@ const Gallery = () => {
     : galleryItems.filter(item => item.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-navy to-primary-navy-dark text-white py-24">
         <div className="container-custom">
@@ -30,7 +30,7 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-neutral-900">
         <div className="container-custom">
           {/* Filter */}
           <motion.div
@@ -42,8 +42,8 @@ const Gallery = () => {
           >
             <div className="flex items-center space-x-4 flex-wrap gap-4">
               <div className="flex items-center space-x-2">
-                <Filter className="text-neutral-600" size={20} />
-                <span className="font-semibold text-primary-navy">Filter:</span>
+                <Filter className="text-neutral-600 dark:text-neutral-400" size={20} />
+                <span className="font-semibold text-primary-navy dark:text-white">Filter:</span>
               </div>
               {galleryCategories.map((cat) => (
                 <button
@@ -52,7 +52,7 @@ const Gallery = () => {
                   className={`px-6 py-2 rounded-full transition-all duration-200 ${
                     selectedCategory === cat.value
                       ? 'bg-accent-orange text-white shadow-lg'
-                      : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                   }`}
                 >
                   {cat.label}
@@ -72,7 +72,7 @@ const Gallery = () => {
                 transition={{ delay: index * 0.05, duration: 0.5 }}
                 className="group relative overflow-hidden rounded-xl cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="aspect-[4/3] relative overflow-hidden bg-neutral-100">
+                <div className="aspect-[4/3] relative overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -92,7 +92,7 @@ const Gallery = () => {
           {filteredItems.length === 0 && (
             <div className="text-center py-16">
               <ImageIcon className="w-16 h-16 text-neutral-400 mx-auto mb-4" />
-              <p className="text-xl text-neutral-600">No photos found in this category</p>
+              <p className="text-xl text-neutral-600 dark:text-neutral-400">No photos found in this category</p>
             </div>
           )}
         </div>
